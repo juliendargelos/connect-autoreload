@@ -11,7 +11,7 @@ If you're looking for the easiest way to refresh your page when files change, ch
 
 ## Installation
 
-`npm install @juliendargelos/connect-autoreload`, or add connected-autoreload to your package.json.
+`yarn add @juliendargelos/connect-autoreload`, or `npm install @juliendargelos/connect-autoreload`, or add connected-autoreload to your package.json.
 
 ## Setup
 

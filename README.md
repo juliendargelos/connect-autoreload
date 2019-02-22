@@ -64,7 +64,7 @@ Example nginx config:
 
 ```
 Copyright (c) 2013 Ian Webster/Room 77, Inc.
-Copyright (c) 2018 Julien Dargelos
+Copyright (c) 2019 Julien Dargelos
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

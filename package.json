@@ -1,9 +1,12 @@
 {
-  "name": "connect-autoreload",
+  "name": "@juliendargelos/connect-autoreload",
   "description": "Autoreload server - watches your files for changes and handles client polling.",
-  "repository": "https://github.com/typpo/connect-autoreload.git",
+  "repository": "https://github.com/juliendargelos/connect-autoreload.git",
   "version": "0.0.6",
   "author": "Ian Webster <ian_npm@ianww.com> (http://ianww.com)",
+  "contributors": [
+    "Julien Dargelos <contact@juliendargelos.com> (https://juliendargelos.com)"
+  ],
   "engines": ["node"],
   "dependencies": {
     "chokidar": ">=0.6.3"

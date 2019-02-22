@@ -1,15 +1,17 @@
 connect-autoreload
 -----------------
 
+This is a non-jquery-dependent fork of [connect-autoreload](https://github.com/typpo/connect-autoreload).
+
 connect-autoreload is connect middleware that supports a basic javascript client.  The server watches for file changes and the client reloads your page when files are changed.  This is useful if you're a frontend developer and you're sick of manually refreshing the page to reflect your changes.
 
 ## Standalone reload script
 
-If you're looking for the easiest way to refresh your page when files change, check out [autoreload](https://github.com/typpo/autoreload).  If you want to integrate the autoreload behavior into your own connect/express server, read on.
+If you're looking for the easiest way to refresh your page when files change, check out [autoreload](https://github.com/juliendargelos/autoreload).  If you want to integrate the autoreload behavior into your own connect/express server, read on.
 
 ## Installation
 
-`npm install connect-autoreload`, or add connected-autoreload to your package.json.
+`npm install @juliendargelos/connect-autoreload`, or add connected-autoreload to your package.json.
 
 ## Setup
 
@@ -19,7 +21,7 @@ See the standalone app in `example/`.  Edit the config, start the server (`node 
 
 If you already have an express app, it's easy to add autoreload middleware:
 
-    var autoreload = require('connect-autoreload')
+    var autoreload = require('@juliendargelos/connect-autoreload')
 
     var config = {
       watch_dirs: 'js html css/compiled thirdparty/frontend',
@@ -37,9 +39,9 @@ It's recommend to start the node app from your project's root directory.  That w
 
 `<script src="http://localhost:60000/autoreload.js"></script>` or include `js/autoreload.js` on your page.
 
-To start reloading the page when changes happen, call `AutoReload.Watch()`. If you run your autoreload server at a different host/port as your page is served from, it can be set as parameter, like `AutoReload.Watch('http://localhost:60000')`.
+To start reloading the page when changes happen, call `AutoReload.watch()`. If you run your autoreload server at a different host/port as your page is served from, it can be set as parameter, like `AutoReload.watch('http://localhost:60000')`.
 
-You can call `AutoReload.Stop()` at any point to cancel the refresh-on-change behavior.
+You can call `AutoReload.stop()` at any point to cancel the refresh-on-change behavior.
 
 ## https setup
 
@@ -62,6 +64,7 @@ Example nginx config:
 
 ```
 Copyright (c) 2013 Ian Webster/Room 77, Inc.
+Copyright (c) 2018 Julien Dargelos
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

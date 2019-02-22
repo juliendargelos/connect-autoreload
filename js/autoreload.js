@@ -1,30 +1,34 @@
 // Long polling client for live reload
 // @author: ian
+// @author: juliendargelos
 
-;function AutoReload(window, $) {
-  var xhr;
-  this.Watch = function(host) {
+;function AutoReload(window) {
+  var request
+
+  function load() {
+    window.location.reload();
+  }
+
+  function error() {
+    console.error('Autoreload unrecoverable error:', request.statusText);
+    request = null
+  }
+
+  this.watch = this.Watch = function(host) {
     (function poll() {
-      xhr = $.ajax({
-        url: window.location.protocol + '//' + (host || '') + '/waitForReload',
-        success: function(data) {
-          window.location.reload();
-        },
-        error: function(jqxhr, textstatus, err) {
-          if (err === 'timeout' || err === 'Proxy Error') {
-            poll();
-          } else {
-            console.error('Autoreload unrecoverable error:', err);
-          }
-          xhr = null;
-        },
-        timeout: 1000*60*10,
-        dataType: 'jsonp'
-      });
+      request = new XMLHttpRequest();
+      request.timeout = 1000*60*10;
+      request.addEventListener('load', reload);
+      request.addEventListener('error', error);
+      request.addEventListener('timeout', poll);
+      request.open('get', window.location.protocol + '//' + (host || 'localhost:60000') + '/waitForReload');
+      request.send();
     })();
   }
-  this.Stop = function() {
-    if (xhr) xhr.abort();
+
+  this.stop = this.Stop = function() {
+    request && request.abort();
   }
 }
-window.AutoReload = new AutoReload(window, jQuery);
+
+window.AutoReload = new AutoReload(window);
